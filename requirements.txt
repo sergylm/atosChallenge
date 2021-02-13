@@ -1,9 +1,4 @@
-Package    Version
----------- -------
-asgiref    3.3.1
-Django     3.1.5
-pip        21.0.1
-pytz       2020.5
-setuptools 52.0.0
-sqlparse   0.4.1
-wheel      0.36.2
+asgiref==3.3.1
+Django==3.1.5
+pytz==2020.5
+sqlparse==0.4.1
