@@ -3,6 +3,6 @@
 {% block content %}
     <form action="." method="POST">{% csrf_token %}
        {{ my_form.as_p }}
-       <p><input type="sumbit" value="Save"/></p> 
+       <button type="sumbit">Save</button>
     </form>
 {% endblock %}
