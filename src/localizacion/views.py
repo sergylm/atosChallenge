@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import LocalizacionForm
 from .models import Localizacion
-from .algoritmo import getSolarData, sumar
+from .algoritmo import *
 
 def localizacion_create_view(request):
     form = LocalizacionForm() 
