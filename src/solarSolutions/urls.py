@@ -19,5 +19,6 @@ from localizacion import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('localizacion/', views.localizacion_create_view)
+    path('localizacion/', views.localizacion_create_view),
+    path('', views.localizacion_create_view)
 ]
