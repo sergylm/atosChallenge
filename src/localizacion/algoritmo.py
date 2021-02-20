@@ -1,6 +1,7 @@
 import requests
 import wget
 
+
 def sumar (x,y):
     return(x + y)
 
@@ -10,6 +11,26 @@ def getSolarData(latitud, longitud):
     print(URL)
     r = requests.get(URL)
     data = r.json()
-    csv = data['outputs']['csv']
-    wget.download(csv, './prueba.csv')
-    return 0
+    csv = data['outputs']['csv'] #url del csv
+    parameters = data['features'][0]['properties']['parameter'] #valores medios mensual y anual por parametro
+    parametersInfo = data['parameterInformation'] #nombre completo y unidades de parametros
+    """for parameter in parameters:
+        print(parameters[parameter])
+    for parameter in parametersInfo:
+        print(parametersInfo[parameter]['longname'])
+        print(parametersInfo[parameter]['units'])"""
+    for para in parameters:
+        parameters[para].insert(0,parametersInfo[para]['longname'] + "("+ parametersInfo[para]['units'] + ')')
+    context={
+        "para": parameters,
+        "paraInfo": parametersInfo
+    }
+    """print(parameters)
+    for para in parameters:
+        for dato in parameters[para]:
+            print(dato)"""
+    aux = []
+    for para in parameters:
+        aux.append(parameters[para])
+    #wget.download(csv, './prueba.csv') # para descargar el csv
+    return aux

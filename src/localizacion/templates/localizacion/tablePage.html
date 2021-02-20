@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p>prueba</p>
+    <table>
+        <tr>
+        {% for fila in filas%}
+            <th>{{fila}}</th>
+        {% endfor %}
+        </tr>
+        {% for parameter in para%}
+        <tr>
+            {% for dato in parameter%}
+            <th>{{dato}}</th>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

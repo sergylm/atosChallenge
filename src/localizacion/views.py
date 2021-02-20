@@ -17,3 +17,17 @@ def localizacion_create_view(request):
         "my_form": form
     }
     return render(request, "localizacion/formPage.html", context)
+
+def carga_tabla(request):
+    if request.method == "GET":
+        form = LocalizacionForm(request.GET)
+        if form.is_valid():
+            variable = Localizacion(**form.cleaned_data)
+            data = getSolarData(variable.latitud,variable.longitud)
+
+    context={
+        "para": data,
+        "filas": ['parametros', 'Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre','Anual'] 
+    }
+    print(data)
+    return render(request, "localizacion/tablePage.html", context)
