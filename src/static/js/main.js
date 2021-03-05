@@ -4,9 +4,19 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-L.marker([40.477778, -3.687778], {draggable:true}).addTo(map) // Ahora el ping es arrastrable.
-.bindPopup('Cuatro Torres')
+var marker = L.marker([40.477778, -3.687778], {draggable:true, autoPan:true, interactive:true}).addTo(map) // Ahora el ping es arrastrable. Además si se meuve a los bordes el mapa se meuve con el.
+.bindPopup('<p>Cuatro Torres</p>') //Se puede usar en los popup codigo HTML que se renderiza.
 .openPopup();
+
+var latlngs = [marker.getLatLng()];
+
+var polygon = L.polygon(latlngs, {color: 'blue'}).addTo(map);  
+
+marker.on('dragend', function(){
+    polygon.addLatLng(marker.getLatLng());  
+});
+
+
 
 var GeoSearchControl = window.GeoSearch.GeoSearchControl;
 var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
@@ -24,7 +34,7 @@ map.addControl(searchControl);
 
 map.on('geosearch/showlocation', function(e) {
     console.log('latitud: ',e.location.y, ' longitud: ', e.location.x, ' Nombre completo: ', e.location.label)
-})
+});
 
 function geoCode() {
     console.log(document.getElementById("address").value);
