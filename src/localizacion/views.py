@@ -31,3 +31,6 @@ def carga_tabla(request):
     }
     print(data)
     return render(request, "localizacion/tablePage.html", context)
+
+def mapa(request):
+    return render(request, "../templates/mapa.html")

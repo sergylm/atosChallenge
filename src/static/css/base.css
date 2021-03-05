@@ -1,0 +1,11 @@
+h1{
+    color: rgb(139, 67, 0);
+}
+#map{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 75%;
+}

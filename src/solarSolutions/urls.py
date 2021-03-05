@@ -16,10 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from localizacion import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('localizacion/', views.localizacion_create_view),
     path('', views.localizacion_create_view),
-    path('carga_tabla/', views.carga_tabla, name='datos')
+    path('carga_tabla/', views.carga_tabla, name='datos'),
+    path('mapa', views.mapa)
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

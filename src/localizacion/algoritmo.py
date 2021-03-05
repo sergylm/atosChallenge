@@ -34,3 +34,28 @@ def getSolarData(latitud, longitud):
         aux.append(parameters[para])
     #wget.download(csv, './prueba.csv') # para descargar el csv
     return aux
+
+def geoCode():
+    URL = " https://nominatim.openstreetmap.org/search"
+    PARAMS = {"namedetails": 1,
+    "polygon_geojson": 1,
+    "hierarchy": 1,
+    "format": 'json',
+    }
+    address = "Melchor Fernandez Almagro Madrid"
+    params_query="&".join(f"{param_name}={param_value}" for param_name, param_value in PARAMS.items())
+    request_url = f"{URL}?q={address}&{params_query}"
+    print(request_url)
+    r = requests.get(request_url)
+    data = r.json()
+    print(data)
+
+    """latitude = data['results'][0]['geometry']['location']['lat'] 
+    longitude = data['results'][0]['geometry']['location']['lng'] 
+    formatted_address = data['results'][0]['formatted_address'] 
+
+    print("Latitud: " + latitude + " Longitud: " + longitude + "\n Dirección: " + formatted_address)
+"""
+    pass
+
+geoCode()
