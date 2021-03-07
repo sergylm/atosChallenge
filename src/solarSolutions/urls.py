@@ -24,7 +24,8 @@ urlpatterns = [
     path('localizacion/', views.localizacion_create_view),
     path('', views.localizacion_create_view),
     path('carga_tabla/', views.carga_tabla, name='datos'),
-    path('mapa', views.mapa)
+    path('mapa', views.mapa),
+    path('prueba', views.prueba),
 ]
 
 if settings.DEBUG:

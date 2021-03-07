@@ -57,5 +57,3 @@ def geoCode():
     print("Latitud: " + latitude + " Longitud: " + longitude + "\n Dirección: " + formatted_address)
 """
     pass
-
-geoCode()
