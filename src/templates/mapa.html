@@ -15,13 +15,25 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@latest/dist/geosearch.css"/>
 </head>
 <body>
-    <div id="map"></div>
+    <div id="map" class="split right"></div>
+    <!-- Interfaz? -->
+    <div class="split left">
+        <button class="collapsible">Paso 1</button>
+        <div class="content">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="address">
+            <input type="submit" onclick="geoCode()">
+        </div>
 
-    <div>
-    <!-- Form-->
-    <label for="direccion">Dirección</label>
-    <input type="text" id="address">
-    <input type="submit" onclick="geoCode()">
+        <button class="collapsible">Paso 2</button>
+        <div class="content">
+            <p>prueba 2</p>
+        </div>
+        
+        <button class="collapsible">Paso 3</button>
+        <div class="content">
+            <p>prueba 3</p>
+        </div>
     </div>
 
     <!-- Leaflet -->

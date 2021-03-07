@@ -1,6 +1,20 @@
-h1{
-    color: rgb(139, 67, 0);
+.split {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    overflow-x: hidden;
 }
+
+.left {
+    left: 0;
+    width: 25%;
+}
+
+.right {
+    right: 0;
+    width: 75%;
+}
+
 #map{
     position: absolute;
     top: 0;
@@ -8,4 +22,26 @@ h1{
     right: 0;
     height: 100%;
     width: 75%;
+}
+
+.collapsible{
+    background-color: lightgreen;
+    color: white;
+    font-size: 25px;
+    text-align: left;
+    border-radius: 25px;
+    display: block;
+    padding: 20px;
+    width: 100%;
+}
+
+.activate, .collapsible:hover {
+    background-color: darkgreen;
+}
+
+.content {
+    max-height: 0;
+    background-color: lightgreen;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
