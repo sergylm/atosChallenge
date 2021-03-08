@@ -20,11 +20,13 @@ marker.on('dragend', function(){
 
 var GeoSearchControl = window.GeoSearch.GeoSearchControl;
 var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
+var ErsiProvider = window.GeoSearch.EsriProvider;
 
 var provider = new OpenStreetMapProvider();
+var providerErsi = new ErsiProvider();
 
 var searchControl = new GeoSearchControl({
-    provider: provider,
+    provider: providerErsi,
     container: 'findbox',
     searchLabel: 'Introduce tu dirección',
     style: 'bar',
