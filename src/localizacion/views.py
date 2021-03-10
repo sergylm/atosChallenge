@@ -44,8 +44,8 @@ def prueba(request):
         for item in data:
             for key in item:
                 parsed_data[key]=item[key]
-        #print(parsed_data)
-        solarData= getSolarData(parsed_data['latitude'], parsed_data['longitude'])
+        print(parsed_data)
+        #solarData= getSolarData(parsed_data['latitude'], parsed_data['longitude'])
         return HttpResponse('funciona')
     else:
         return HttpResponse('No es un POST request')

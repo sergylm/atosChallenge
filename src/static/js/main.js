@@ -34,6 +34,13 @@ var searchControl = new GeoSearchControl({
 
 map.addControl(searchControl);
 
+//sacar search-box
+document.getElementById('findbox').appendChild(
+    document.querySelector('.leaflet-control-container > .leaflet-geosearch-bar')
+    //document.querySelector('.geosearch')
+);
+
+
 //collapsible
 var coll = document.getElementsByClassName('collapsible');
 var i;
@@ -45,7 +52,7 @@ for(i = 0;i< coll.length; i++){
         if(content.style.maxHeight){
             content.style.maxHeight = null;
         } else {
-            content.style.maxHeight = content.scrollHeight + 'px';
+            content.style.maxHeight = content.scrollHeight+100 + 'px';
         }
     });
 }

@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import re_path
 from localizacion import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic.base import RedirectView
+
+favicon_view = RedirectView.as_view(url='/static/img/favicon.ico', permanent='True')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +30,7 @@ urlpatterns = [
     path('carga_tabla/', views.carga_tabla, name='datos'),
     path('mapa', views.mapa),
     path('prueba', views.prueba),
+    re_path(r'favicon\.ico$', favicon_view),
 ]
 
 if settings.DEBUG:
