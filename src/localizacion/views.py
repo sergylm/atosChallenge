@@ -37,7 +37,10 @@ def carga_tabla(request):
 def mapa(request):
     return render(request, "../templates/mapa.html")
 
-def prueba(request):
+def main(request):
+    return render(request, "../templates/main.html")
+
+def solarData(request):
     if request.method == "POST":
         data = parse_obj(json.loads(request.body))['Data']
         parsed_data = {}
@@ -45,10 +48,19 @@ def prueba(request):
             for key in item:
                 parsed_data[key]=item[key]
         print(parsed_data)
-        #solarData= getSolarData(parsed_data['latitude'], parsed_data['longitude'])
-        return HttpResponse('funciona')
+        solarData= getSolarData(parsed_data['latitude'], parsed_data['longitude'])
+        return HttpResponse(json.dumps(solarData))
     else:
-        return HttpResponse('No es un POST request')
+        return HttpResponse('Error')
+
+def polygonOSM(request):
+    if request.method == "POST":
+        data = parse_obj(json.loads(request.body))['Data']
+        print(data)
+        rectangle = getRectangle(data)
+        return HttpResponse(json.dumps(rectangle))
+    else:
+        return HttpResponse('Error')
 
 def parse_obj(obj):
     for key in obj:

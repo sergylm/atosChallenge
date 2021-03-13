@@ -13,30 +13,35 @@
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@latest/dist/geosearch.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css"/>
     <!-- Chartjs -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="">
 </head>
 <body>
-    <div id="map" class="split right"></div>
-    <!-- Interfaz? -->
-    <div class="split left">
-        <button class="collapsible">Paso 1</button>
-        <div class="content">
-            <div id="findbox">
-                <label for="">Address</label>
+    <div id="map"></div>
+    <div id="menu">
+        <div class="split left">
+            <button class="collapsible">Paso 1</button>
+            <div class="content">
+                <div id="findbox">
+                    <label for="">Escribe tu dirección</label>
+                </div>
             </div>
-        </div>
-
-        <button class="collapsible">Paso 2</button>
-        <div class="content">
-            <label for="direccion">Dirección</label>
-            <input type="text" id="address">
-            <input type="submit" onclick="geoCode()">
-        </div>
-        
-        <button class="collapsible">Paso 3</button>
-        <div class="content">
-            <p>prueba 3</p>
+    
+            <button class="collapsible">Paso 2</button>
+            <div class="content">
+                <label>Dibuja tu parcela y una vez terminado pulsa el botón</label>
+                <input type="submit" value="Enviar Parcela" onclick="getParcela()">
+            </div>
+            
+            <button class="collapsible">Paso 3</button>
+            <div class="content">
+                <p>Prueba 3</p>
+            </div>
+            <div style="width: 100%;">
+                <canvas id="chart"></canvas>
+                <progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>
+            </div>
         </div>
     </div>
     <!-- JQuery-->
@@ -44,6 +49,7 @@
     <!-- Leaflet -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <script src="https://unpkg.com/leaflet-geosearch@latest/dist/geosearch.umd.js"></script>
+    <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
     <!-- Chartjs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin=""></script>
     <!-- Scripts -->   

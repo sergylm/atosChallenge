@@ -1,22 +1,37 @@
-const map = L.map('map').setView([40.477778, -3.687778], 13);
-
+//--------------------------------------------------------------------------------------------------------------------------------------------
+//map
+const map = L.map('map').setView([40, -3], 7);
+map.zoomControl.setPosition('topright');
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-var marker = L.marker([40.477778, -3.687778], {draggable:true, autoPan:true, interactive:true}).addTo(map) // Ahora el ping es arrastrable. Además si se meuve a los bordes el mapa se meuve con el.
-.bindPopup('<p>Cuatro Torres</p>') //Se puede usar en los popup codigo HTML que se renderiza.
-.openPopup();
+//geoman
+map.pm.addControls({  
+    position: 'topright',  
+    drawCircle: false, 
+}); 
 
-var latlngs = [marker.getLatLng()];
+function getParcela(){
+    $.ajax({
+        url: "polygon", 
+        method: "POST",
+        data : JSON.stringify({Data: window.geoJson}),
+        // success: function (returned_data) { 
+        //     data = JSON.parse(returned_data);
+        //     loadData(data[0]); 
+        // },
+        error: function () {
+          alert('An error occured');
+        }
+    });
 
-var polygon = L.polygon(latlngs, {color: 'blue'}).addTo(map);  
+}
 
-marker.on('dragend', function(){
-    polygon.addLatLng(marker.getLatLng());  
+map.on('pm:create', function(e){
+    window.geoJson = e.layer.toGeoJSON();
+    //console.log(window.geoJson);
 });
-
-
 
 var GeoSearchControl = window.GeoSearch.GeoSearchControl;
 var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
@@ -36,26 +51,11 @@ map.addControl(searchControl);
 
 //sacar search-box
 document.getElementById('findbox').appendChild(
+    //style: bar
     document.querySelector('.leaflet-control-container > .leaflet-geosearch-bar')
+    //style: button | default
     //document.querySelector('.geosearch')
 );
-
-
-//collapsible
-var coll = document.getElementsByClassName('collapsible');
-var i;
-
-for(i = 0;i< coll.length; i++){
-    coll[i].addEventListener('click', function(){
-        this.classList.toggle('activate');
-        var content = this.nextElementSibling;
-        if(content.style.maxHeight){
-            content.style.maxHeight = null;
-        } else {
-            content.style.maxHeight = content.scrollHeight+100 + 'px';
-        }
-    });
-}
 
 //csrf token
 $.ajaxSetup({
@@ -84,30 +84,109 @@ $.ajaxSetup({
     }
 });
 
+function ayuda(){
+    console.log()
+}
+
 map.on('geosearch/showlocation', function(e) {
     var data = [{'latitude': e.location.y},{'longitude': e.location.x},{'name': e.location.label}];
-
     $.ajax({
-        url: "prueba", // Path of the python script to do the processing
-        method: "POST", // Method to submit the HTTP request as, usually either POST or GET
-        /*data: { // These are the POST parameters passed to the backend script
-         latitude: e.location.y,
-         longitude: e.location.x,
-         name: e.location.label,
-        },*/
+        url: "nasa", 
+        method: "POST",
         data : JSON.stringify({Data: data}),
-        success: function (returned_data) { // Function to run if successful, with the function parameter being the output of the url script
-          //alert('Here is the output: ' + returned_data);
+        success: function (returned_data) { 
+            data = JSON.parse(returned_data);
+            loadData(data[0]); 
         },
-        error: function () { // Function to run if unsuccessful
+        error: function () {
           alert('An error occured');
         }
     });
-    console.log('latitud: ',e.location.y, ' longitud: ', e.location.x, ' Nombre completo: ', e.location.label);
+    //console.log('latitud: ',e.location.y, ' longitud: ', e.location.x, ' Nombre completo: ', e.location.label);
 });
 
+//--------------------------------------------------------------------------------------------------------------------------------------------
+//chartjs
 
-function geoCode() {
-    console.log(document.getElementById("address").value);
-}
+window.Chart;
+var ctx = document.getElementById('chart').getContext('2d');
+var progress = document.getElementById('animationProgress');
+progress.style.display = 'none';
+var aux = false;
 
+var dynamicColors = function() {
+    var r = Math.floor(Math.random() * 255);
+    var g = Math.floor(Math.random() * 255);
+    var b = Math.floor(Math.random() * 255);
+    return "rgb(" + r + "," + g + "," + b;
+};
+
+function loadData(data){
+    var labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'Anual'];
+    var backgroundColors = [];
+    var borderColors = [];
+    console.log(data);
+    console.log(data.slice(1,14));
+
+    for(var i = 0; i < 14; i++){
+        var aux = dynamicColors();
+        backgroundColors.push(aux + ", 0.2)");
+        borderColors.push(aux + ", 1)");
+    };
+
+    var dataSet = {
+        label: data[0],
+        data: data.slice(1,14),
+        backgroundColor: backgroundColors,
+        borderColor: borderColors,
+        borderWidth: 1
+    };
+
+    var config = {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [dataSet]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'NASA Solar Data'
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            animation: {
+                duration: 1000,
+                onProgress: function(animation) {
+                    if (progress.value != 1){
+                    progress.value = animation.currentStep / animation.numSteps;}
+                }
+            }
+        }
+    };
+
+    var myChart = new Chart(ctx, config);
+    progress.style.display = 'block';
+};
+
+//--------------------------------------------------------------------------------------------------------------------------------------------
+//collapsible
+var coll = document.getElementsByClassName('collapsible');
+var i;
+
+for(i = 0;i< coll.length; i++){
+    coll[i].addEventListener('click', function(){
+        this.classList.toggle('activate');
+        var content = this.nextElementSibling;
+        if(content.style.maxHeight){
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight+100 + 'px';
+        }
+    });
+};
