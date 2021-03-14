@@ -25,4 +25,12 @@ def getSolarData(latitud, longitud):
     return aux
 
 def getRectangle(geoJson):
-    pass
+    coords = geoJson['geometry']['coordinates'][0]
+    long = [item[0] for item in coords]
+    lat = [item[1] for item in coords]
+    maxLong = max(long)
+    maxLat = max(lat)
+    minLong = min(long)
+    minLat = min(lat)
+    geoJson['geometry']['coordinates'][0] = [[maxLong,maxLat],[minLong,maxLat],[minLong,minLat],[maxLong,minLat],[maxLong,minLat]]
+    return geoJson

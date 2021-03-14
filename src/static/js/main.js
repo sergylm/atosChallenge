@@ -6,10 +6,15 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+//--------------------------------------------------------------------------------------------------------------------------------------------
 //geoman
 map.pm.addControls({  
     position: 'topright',  
-    drawCircle: false, 
+    drawMarker: false,
+    drawPolyline: false,
+    drawCircle: false,
+    drawRectangle: false,
+    drawCircleMarker: false,
 }); 
 
 function getParcela(){
@@ -17,10 +22,13 @@ function getParcela(){
         url: "polygon", 
         method: "POST",
         data : JSON.stringify({Data: window.geoJson}),
-        // success: function (returned_data) { 
-        //     data = JSON.parse(returned_data);
-        //     loadData(data[0]); 
-        // },
+        success: function (returned_data) { 
+            data = JSON.parse(returned_data);
+            //pintar rectangulo circunscrito
+            L.geoJSON(data, {
+                style: {color: '#FF0000'},
+            }).addTo(map);
+        },
         error: function () {
           alert('An error occured');
         }
@@ -29,9 +37,12 @@ function getParcela(){
 }
 
 map.on('pm:create', function(e){
+    //último polígono dibujado
     window.geoJson = e.layer.toGeoJSON();
-    //console.log(window.geoJson);
 });
+
+//--------------------------------------------------------------------------------------------------------------------------------------------
+//Search-box
 
 var GeoSearchControl = window.GeoSearch.GeoSearchControl;
 var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
@@ -42,7 +53,6 @@ var providerErsi = new ErsiProvider();
 
 var searchControl = new GeoSearchControl({
     provider: providerErsi,
-    container: 'findbox',
     searchLabel: 'Introduce tu dirección',
     style: 'bar',
   });
@@ -84,10 +94,6 @@ $.ajaxSetup({
     }
 });
 
-function ayuda(){
-    console.log()
-}
-
 map.on('geosearch/showlocation', function(e) {
     var data = [{'latitude': e.location.y},{'longitude': e.location.x},{'name': e.location.label}];
     $.ajax({
@@ -102,7 +108,6 @@ map.on('geosearch/showlocation', function(e) {
           alert('An error occured');
         }
     });
-    //console.log('latitud: ',e.location.y, ' longitud: ', e.location.x, ' Nombre completo: ', e.location.label);
 });
 
 //--------------------------------------------------------------------------------------------------------------------------------------------
