@@ -1,58 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa interactivo</title>
-    
-    <!-- Estilo -->
-    <link rel="stylesheet" href="/static/css/base.css">
-    
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@latest/dist/geosearch.css"/>
-    <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css"/>
-    <!-- Chartjs -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="">
-</head>
-<body>
-    <div id="map"></div>
-    <div id="menu">
-        <div class="split left">
-            <button class="collapsible">Paso 1</button>
-            <div class="content">
-                <div id="findbox">
-                    <label for="">Escribe tu dirección</label>
-                </div>
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+      <title>WebAppSS</title>
+      <!-- Boostrap -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+      <!-- Estilo -->
+      <link rel="stylesheet" href="/static/css/base.css">
+      <!-- Leaflet -->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@latest/dist/geosearch.css"/>
+      <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css"/>
+      <!-- Chartjs -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="">
+   </head>
+   <body>
+      <header>
+         <img class="logo" src="/static/img/logo_small.ico" alt="logo">
+         <input type="checkbox" id="nav-toggle" class="nav-toggle">
+         <nav>
+            <ul>
+               <li><a href="#">Home</a></li>
+               <li><a href="#">About</a></li>
+               <li><a href="#">Blog</a></li>
+               <li><a href="#">Contact</a></li>
+            </ul>
+         </nav>
+         <label for="nav-toggle" class="nav-toggle-label">
+         <span></span>
+         </label>
+      </header>
+      <main>
+         <div class="content">
+            <div id="map"></div>
+            <div class="overlay">
+               <div role="tablist" id="accordion-1">
+                  <div class="card">
+                     <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-1" href="#accordion-1 .item-1">First Step</a></h5>
+                     </div>
+                     <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                           <div id="findbox">
+                              <label for="">Type your adress.</label>
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="#accordion-1 .item-2">Second Step</a></h5>
+                     </div>
+                     <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                          <label>Select your plot on the map then hit the button below.</label>
+                          <input type="submit" value="Done" onclick="getParcela()">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-3" href="#accordion-1 .item-3">Third Step</a></h5>
+                     </div>
+                     <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                           <canvas id="chart"></canvas>
+                           <progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>
+                       </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-    
-            <button class="collapsible">Paso 2</button>
-            <div class="content">
-                <label>Dibuja tu parcela y una vez terminado pulsa el botón</label>
-                <input type="submit" value="Enviar Parcela" onclick="getParcela()">
-            </div>
-            
-            <button class="collapsible">Paso 3</button>
-            <div class="content">
-                <p>Prueba 3</p>
-            </div>
-            <div style="width: 100%;">
-                <canvas id="chart"></canvas>
-                <progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>
-            </div>
-        </div>
-    </div>
-    <!-- JQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Leaflet -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-    <script src="https://unpkg.com/leaflet-geosearch@latest/dist/geosearch.umd.js"></script>
-    <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
-    <!-- Chartjs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin=""></script>
-    <!-- Scripts -->   
-    <script src="/static/js/main.js" type="text/javascript"></script>
-</body>
+         </div>
+      </main>
+      <!-- JQuery-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!-- Leaflet -->
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+      <script src="https://unpkg.com/leaflet-geosearch@latest/dist/geosearch.umd.js"></script>
+      <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
+      <!-- Chartjs -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin=""></script>
+      <!-- Scripts -->   
+      <script src="/static/js/main.js" type="text/javascript"></script>
+      <!--Boostrap-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+   </body>
 </html>

@@ -1,7 +1,6 @@
 import json
 import requests
 import wget
-import numpy as np
 
 def sumar (x,y):
     return(x + y)
