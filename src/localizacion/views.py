@@ -56,9 +56,10 @@ def solarData(request):
 def polygonOSM(request):
     if request.method == "POST":
         data = parse_obj(json.loads(request.body))['Data']
-        print(data)
-        rectangle = getRectangle(data)
-        return HttpResponse(json.dumps(rectangle))
+        #print(data)
+        coords = getOSM(data)
+        trimOSM(coords)
+        return HttpResponse('Fine')
     else:
         return HttpResponse('Error')
 

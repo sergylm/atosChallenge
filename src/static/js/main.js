@@ -178,8 +178,3 @@ function loadData(data){
     var myChart = new Chart(ctx, config);
     progress.style.display = 'block';
 };
-
-
-//--------------------------------------------------------------------------------------------------------------------------------------------
-//accordion
-
