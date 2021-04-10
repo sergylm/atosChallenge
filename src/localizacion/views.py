@@ -41,7 +41,6 @@ def mapa(request):
 def main(request):
     return render(request, "../templates/main.html")
 
-@csrf_protect
 def solarData(request):
     if request.method == "POST":
         data = parse_obj(json.loads(request.body))['Data']
