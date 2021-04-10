@@ -4,6 +4,7 @@ from .forms import LocalizacionForm
 from .models import Localizacion
 from .algoritmo import *
 import json
+from django.views.decorators.csrf import csrf_protect
 
 def localizacion_create_view(request):
     form = LocalizacionForm() 
@@ -40,6 +41,7 @@ def mapa(request):
 def main(request):
     return render(request, "../templates/main.html")
 
+@csrf_protect
 def solarData(request):
     if request.method == "POST":
         data = parse_obj(json.loads(request.body))['Data']
