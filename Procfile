@@ -1,1 +1,1 @@
-web: gunicorn localizacion.wsgi
+web: gunicorn wsgi:app
