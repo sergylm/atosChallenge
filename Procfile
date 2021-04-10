@@ -1,1 +1,1 @@
-web: gunicorn src.solarSolutions.wsgi
+web: gunicorn solarSolutions.wsgi
