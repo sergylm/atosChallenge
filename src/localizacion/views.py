@@ -60,7 +60,7 @@ def polygonOSM(request):
         #print(data)
         coords = getOSM(data)
         trimOSM(coords)
-        return HttpResponse('Fine')
+        return HttpResponse(json.dump(coords))
     else:
         return HttpResponse('Error')
 
