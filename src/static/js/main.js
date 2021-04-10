@@ -127,6 +127,7 @@ map.on('geosearch/showlocation', function(e) {
     var data = [{'latitude': e.location.y},{'longitude': e.location.x},{'name': e.location.label}];
     $.ajax({
         url: "nasa", 
+        headers: {'X-CSRFToken': csrftoken},
         method: "POST",
         data : JSON.stringify({Data: data}),
         success: function (returned_data) { 
