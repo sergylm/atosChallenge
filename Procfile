@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:8000 solarSolutions.wsgi:application --preload -b 0.0.0.0:5000
+web: gunicorn src.solarSolutions.wsgi
