@@ -1,1 +1,1 @@
-chmod a+x src/osmconvert.exe
+chmod a+x src/osmconvert
