@@ -43,10 +43,13 @@ def trimOSM(coords):
         for item in coords:
             f.write("\t"+str(item[0])+" "+str(item[1])+"\n")
         f.write('END')
-    trim = r"""src/osmconvert src/map.osm -B=src/polygone.poly -o=src/map2.osm"""
+    trim = r"""src\osmconvert.exe src/map.osm -B=src/polygone.poly -o=src/map2.osm"""
     os.system(trim)
     os.remove("src/map.osm")
     os.rename("src/map2.osm", "src/map.osm")
-    convert = r"""src\ src/map.osm -B=src/polygone.poly -o=src/map2.osm"""
-
+    convert = r"""src\OSM2World\osm2world.sh -i src/map.osm -o src/prueba.obj"""
+    convert2 = r"""src\OSM2World\osm2world.bat -i src/map.osm -o src/prueba.obj"""
+    convert3 = r"""java -Xmx512m -jar src/OSM2World/OSM2World.jar -i src/map.osm -o src/static/resources/prueba.obj""" 
+    os.system(convert3)
+    
     pass

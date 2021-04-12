@@ -4,7 +4,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-      <title>WebAppSS</title>
+      <title>Map-SolarSolutions</title>
       <!-- Boostrap -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
       <!-- Estilo -->
@@ -18,7 +18,7 @@
    </head>
    <body>
       <header>
-         <img class="logo" src="/static/img/logo_small.ico" alt="logo">
+         <img class="logo" src="/static/resources/logo_small.ico" alt="logo">
          <input type="checkbox" id="nav-toggle" class="nav-toggle">
          <nav>
             <ul>
@@ -39,7 +39,7 @@
                <div role="tablist" id="accordion-1">
                   <div class="card">
                      <div class="card-header" role="tab">
-                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-1" href="#accordion-1 .item-1">First Step</a></h5>
+                           <h5 class="mb-0"><a id="card1" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-1" href="#accordion-1 .item-1">First Step</a></h5>
                      </div>
                      <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-1">
                         <div class="card-body">
@@ -52,24 +52,33 @@
                   </div>
                   <div class="card">
                      <div class="card-header" role="tab">
-                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="#accordion-1 .item-2">Second Step</a></h5>
+                        <h5 class="mb-0"><a id="card2" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="#accordion-1 .item-2">Second Step</a></h5>
                      </div>
                      <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
                         <div class="card-body">
                           <label>Select your plot on the map then hit the button below.</label>
-                          <input type="submit" value="Done" onclick="getParcela()">
+                          <input id="parcela" type="submit" value="Done">
                         </div>
                      </div>
                   </div>
                   <div class="card">
                      <div class="card-header" role="tab">
-                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-3" href="#accordion-1 .item-3">Third Step</a></h5>
+                        <h5 class="mb-0"><a id="card3" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-3" href="#accordion-1 .item-3">Third Step</a></h5>
                      </div>
                      <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
                         <div class="card-body">
                            <canvas id="chart"></canvas>
-                           <progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>
                        </div>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a id="card4" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-4" href="#accordion-1 .item-4">Extra</a></h5>
+                     </div>
+                     <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                           <div id= 'obj'></div>
+                        </div>
                      </div>
                   </div>
                </div>
@@ -86,7 +95,7 @@
       <!-- Chartjs -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin=""></script>
       <!-- Scripts -->   
-      <script src="/static/js/main.js" type="text/javascript"></script>
+      <script src="/static/js/main.js" type="module"></script>
       <!--Boostrap-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
    </body>

@@ -231,3 +231,9 @@ div.card-header h5 a {
     transform: scale(1, 1);
   }
 }
+
+#obj {
+  width: 100%;
+  height: 100%;
+  
+}

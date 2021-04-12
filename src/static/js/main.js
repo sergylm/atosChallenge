@@ -16,25 +16,35 @@ map.pm.addControls({
     drawRectangle: false,
     drawCircleMarker: false,
 }); 
-
-function getParcela(){
-    $.ajax({
-        url: "polygon", 
-        method: "POST",
-        data : JSON.stringify({Data: window.geoJson}),
-        success: function (returned_data) { 
-            data = JSON.parse(returned_data);
-            //pintar rectangulo circunscrito
-            L.geoJSON(data, {
-                style: {color: '#FF0000'},
-            }).addTo(map);
-        },
-        error: function () {
-          alert('An error occured');
-        }
-    });
-
-}
+$('#parcela').on("click", function(){
+    if (window.geoJson != null){
+        document.getElementById('card3').click();
+        $.ajax({
+            url: "polygon", 
+            method: "POST",
+            data : JSON.stringify({Data: window.geoJson}), 
+            success: function (returned_data) { 
+                // data = JSON.parse(returned_data);
+                // pintar rectangulo circunscrito
+                // L.geoJSON(data, {
+                //     style: {color: '#FF0000'},
+                // }).addTo(map);
+            },
+            error: function () {
+            alert('An error occured');
+            }
+        });
+       
+    }
+});
+var aux = 0; 
+$('#card4').on('click', function(){
+    if(aux == 0){
+        init();
+        animate();
+        aux = 1;
+    }
+})
 
 map.on('pm:create', function(e){
     //último polígono dibujado
@@ -48,12 +58,11 @@ var GeoSearchControl = window.GeoSearch.GeoSearchControl;
 var OpenStreetMapProvider = window.GeoSearch.OpenStreetMapProvider;
 var ErsiProvider = window.GeoSearch.EsriProvider;
 
-var provider = new OpenStreetMapProvider();
 var providerErsi = new ErsiProvider();
 
 var searchControl = new GeoSearchControl({
     provider: providerErsi,
-    searchLabel: 'Introduce tu dirección',
+    searchLabel: 'Address...',
     style: 'bar',
   });
 
@@ -97,6 +106,7 @@ $.ajaxSetup({
 
 map.on('geosearch/showlocation', function(e) {
     var data = [{'latitude': e.location.y},{'longitude': e.location.x},{'name': e.location.label}];
+    document.getElementById('card2').click();
     $.ajax({
         url: "nasa", 
         headers: {'X-CSRFToken': csrftoken},
@@ -117,9 +127,9 @@ map.on('geosearch/showlocation', function(e) {
 
 window.Chart;
 var ctx = document.getElementById('chart').getContext('2d');
-var progress = document.getElementById('animationProgress');
-progress.style.display = 'none';
-var aux = false;
+// var progress = document.getElementById('animationProgress');
+// progress.style.display = 'none';
+// var aux = false;
 
 var dynamicColors = function() {
     var r = Math.floor(Math.random() * 255);
@@ -132,8 +142,8 @@ function loadData(data){
     var labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'Anual'];
     var backgroundColors = [];
     var borderColors = [];
-    console.log(data);
-    console.log(data.slice(1,14));
+    // console.log(data);
+    // console.log(data.slice(1,14));
 
     for(var i = 0; i < 14; i++){
         var aux = dynamicColors();
@@ -167,16 +177,107 @@ function loadData(data){
                     }
                 }]
             },
-            animation: {
-                duration: 1000,
-                onProgress: function(animation) {
-                    if (progress.value != 1){
-                    progress.value = animation.currentStep / animation.numSteps;}
-                }
-            }
+            // animation: {
+            //     duration: 1000,
+            //     onProgress: function(animation) {
+            //         if (progress.value != 1){
+            //         progress.value = animation.currentStep / animation.numSteps;}
+            //     }
+            // }
         }
     };
 
     var myChart = new Chart(ctx, config);
-    progress.style.display = 'block';
+    // progress.style.display = 'block';
 };
+//--------------------------------------------------------------------------------------------------------------------------------------------
+//Threejs
+import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
+
+import { MTLLoader } from 'https://unpkg.com/three@0.127.0/examples/jsm/loaders/MTLLoader.js';
+import {OBJLoader} from 'https://unpkg.com/three@0.127.0/examples/jsm/loaders/OBJLoader.js';
+import {OrbitControls} from 'https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js';
+
+let camera, scene, renderer;
+
+let windowHalfX = window.innerWidth / 2;
+let windowHalfY = window.innerHeight / 2;
+const container  = document.getElementById('obj');                              
+
+function init() {
+
+    camera = new THREE.PerspectiveCamera( 10, window.innerWidth / window.innerHeight, 1, 10000 );
+    camera.position.z = 400;
+
+    // controls
+    const controls = new OrbitControls (camera, container);
+    controls.enablePan = false;
+    controls.enableDamping = true;
+
+    // scene
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xbfe3dd);
+
+    //ambientLigth
+    const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
+    scene.add( ambientLight );
+
+    //pointLight
+    const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
+    camera.add( pointLight );
+    scene.add( camera );
+
+    // model
+
+    const onProgress = function ( xhr ) {
+        if ( xhr.lengthComputable ) {
+            const percentComplete = xhr.loaded / xhr.total * 100;
+            console.log( Math.round( percentComplete, 2 ) + '% downloaded' );
+        }
+    };
+
+    const onError = function () { };
+    const manager = new THREE.LoadingManager();
+
+    new MTLLoader( manager )
+        .setPath( './static/resources/' )
+        .load( 'prueba.obj.mtl', function ( materials ) {
+            materials.preload();
+            new OBJLoader( manager )
+                .setMaterials( materials )
+                .setPath( './static/resources/' )
+                .load( 'prueba.obj', function ( object ) {
+                    object.position.y = - 10;
+                    scene.add( object );
+                }, onProgress, onError );
+
+        } );
+    renderer = new THREE.WebGLRenderer();
+    renderer.setPixelRatio( window.devicePixelRatio );
+    renderer.setSize(400,400);
+    container.appendChild( renderer.domElement );
+    window.addEventListener( 'resize', onWindowResize );
+
+}
+
+export function onWindowResize() {
+
+    windowHalfX = container.clientWidth / 2;
+    windowHalfY = container.clientHeight / 2;
+
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( container.clientWidth, container.clientHeight );
+
+}
+
+function animate() {
+    requestAnimationFrame( animate );
+    render();
+}
+
+function render() {
+    camera.lookAt( scene.position );
+    renderer.render( scene, camera );
+}
