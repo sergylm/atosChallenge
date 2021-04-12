@@ -1,0 +1,1 @@
+web: gunicorn solarSolutions.wsgi --python src

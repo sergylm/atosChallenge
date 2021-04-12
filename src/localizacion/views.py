@@ -4,6 +4,7 @@ from .forms import LocalizacionForm
 from .models import Localizacion
 from .algoritmo import *
 import json
+from django.views.decorators.csrf import csrf_protect
 
 def localizacion_create_view(request):
     form = LocalizacionForm() 
@@ -56,9 +57,10 @@ def solarData(request):
 def polygonOSM(request):
     if request.method == "POST":
         data = parse_obj(json.loads(request.body))['Data']
-        print(data)
-        rectangle = getRectangle(data)
-        return HttpResponse(json.dumps(rectangle))
+        #print(data)
+        coords = getOSM(data)
+        trimOSM(coords)
+        return HttpResponse(json.dumps(coords))
     else:
         return HttpResponse('Error')
 
