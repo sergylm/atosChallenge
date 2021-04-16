@@ -35,11 +35,14 @@ def carga_tabla(request):
     print(data)
     return render(request, "localizacion/tablePage.html", context)
 
-def mapa(request):
-    return render(request, "../templates/mapa.html")
+def webApp(request):
+    return render(request, "../templates/webApp.html")
 
 def home(request):
     return render(request, "../templates/home.html")
+
+def posAnalisis(request):
+    return render(request, "../templates/posAnalisis.html")
 
 def solarData(request):
     if request.method == "POST":
