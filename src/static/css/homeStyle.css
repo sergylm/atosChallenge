@@ -5,7 +5,7 @@ body {
 }
 
 a {
-  color: #ef6603;
+  color: white;
   text-decoration: none;
 }
 
@@ -14,7 +14,7 @@ a:hover {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
   font-family: "Raleway", sans-serif;
 }
 
@@ -205,29 +205,6 @@ h1, h2, h3, h4, h5, h6 {
   height: auto;
 }
 
-#backheader .btn-get-started {
-  font-family: "Raleway", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 12px 32px;
-  border-radius: 50px;
-  transition: 0.5s;
-  line-height: 1;
-  margin: 10px;
-  color: #fff;
-  -webkit-animation-delay: 0.8s;
-  animation-delay: 0.8s;
-  border: 2px solid #ef6603;
-}
-
-#backheader .btn-get-started:hover {
-  background: #ef6603;
-  color: #fff;
-  text-decoration: none;
-}
-
 @media (min-width: 1024px) {
   #backheader p {
     width: 60%;
@@ -245,7 +222,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 28px;
   }
 }
-
+/* Animation-waves */
 .backheader-waves {
   display: block;
   width: 100%;
@@ -372,4 +349,69 @@ section {
 /* aboutUs-style */
 .aboutUs {
   padding-top: 80px;
+}
+
+/* Services-style */
+.services .info-box{
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 29px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.4s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+.services .info-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 2px 35px 0 rgba(68, 88, 144, 0.2);
+}
+.services .icon{
+  position: absolute;
+  left: -25px;
+  top: calc(50% - 30px);
+}
+.services .icon i {
+  font-size: 64px;
+  line-height: 1;
+  transition: 0.5s;
+}
+.services .title{
+	margin-left: 20px;
+	font-weight:800;
+}
+.services .info{
+	margin-left: 20px;
+}
+
+/* jumpIn-style */
+
+.jumpIn{
+	background-color: rgba(52,56,56,1);
+}
+.jumpIn .button{
+	border-radius: 100px;
+	background-color: rgba(0,223,252,1);
+	font-size:18px;
+	padding:12px 30px;
+	margin:10px;
+	font-size:20px;
+	font-weight:900;
+	font-family:"Raleway", sans-serif;
+}
+.jumpIn .button:hover{
+	background-color: white;
+}
+.jumpIn .button-case{
+	display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.jumpIn .title{
+	color: rgba(0,223,252,1);
+	font-weight: 800;
+}
+.jumpIn .info{
+	color: white;
 }

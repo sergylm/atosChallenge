@@ -38,8 +38,8 @@ def carga_tabla(request):
 def mapa(request):
     return render(request, "../templates/mapa.html")
 
-def main(request):
-    return render(request, "../templates/main.html")
+def home(request):
+    return render(request, "../templates/home.html")
 
 def solarData(request):
     if request.method == "POST":

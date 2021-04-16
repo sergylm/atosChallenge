@@ -5,7 +5,7 @@
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 		<title>Solar Solution Home</title>
 		<!-- icon -->
-		<link href="img/logo.jpg" rel="icon">
+		<link href="/static/resources/logo.jpg" rel="icon">
 		<!-- boostrap -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<!-- font -->
@@ -30,16 +30,17 @@
 		<div class="container d-flex align-items-center justify-content-between">
 
 		  <div class="logo">
-			<a href="home.html"><img src="/static/resources/logo.ico" alt="" class="img-fluid"></a>
+			<a href="home.html"><img src="img/logo.jpg" alt="" class="img-fluid"></a>
 		  </div>
 
 		  <nav id="navbar" class="navbar">
 			<ul>
-			  <li><a class="nav-link scrollto active" href="#backheader">Home</a></li>
-			  <li><a class="nav-link scrollto" href="#aboutUs">About</a></li>
-			  <li><a class="nav-link scrollto" href="#services">Services</a></li>
-			  <li><a class="nav-link scrollto" href="#team">Team</a></li>
-			  <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+			  <li><a class="nav-link scrollto active" href="home.html#backheader">Home</a></li>
+			  <li><a class="nav-link scrollto" href="home.html#aboutUs">About</a></li>
+			  <li><a class="nav-link scrollto" href="home.html#services">Services</a></li>
+			  <li><a class="nav-link scrollto" href="webApp.html">WebApp</a></li>
+			  <li><a class="nav-link scrollto" href="home.html#team">Team</a></li>
+			  <li><a class="nav-link scrollto" href="home.html#contact">Contact</a></li>
 			</ul>
 			<i class="bi bi-list mobile-nav-toggle"></i>
 		  </nav>
@@ -103,34 +104,87 @@
 	  
 	  <main id="content">
 	  
-		<section id="aboutUs">
+		<section id="aboutUs" class="aboutUs">
 			<div class="container">
 				<div class="section-title" data-aos="zoom-out">
-					<h2>About us</h2>
-				
+					<h2>About us</h2>				
+				</div>
+				<div class="row">
+					<div class="col-lg-6"  data-aos="zoom-out">
+						<p>Texto informativo sobre nuestro proyecto</p>
+					</div>
+
+					<div class="col-lg-6" data-aos="zoom-out">
+						<p>Texto informativo sobre nuestro proyecto</p>
+					</div>
+				</div>				
+			</div>
+		</section>
+		
+		<section id="services" class="services">
+			<div class="container">
+				<div class="section-title" data-aos="zoom-out">
+					<h2>Services</h2>				
+				</div>
+				<div class="row">
+					<div class="col-6">
+						<div class="info-box" data-aos="zoom-out">
+							<div class="icon"><i class='bx bx-sun' style="color: rgba(0,140,158,1)"></i></div>
+							<h4 class="title">Solar panel invest info</h4>
+							<p class="info">Analysis of the amortisation of the use of solar panels.</p>
+						</div>
+					</div>					
+					<div class="col-6">
+						<div class="info-box" data-aos="zoom-out">
+							<div class="icon"><i class='bx bx-user' style="color: rgba(0,140,158,1)"></i></div>
+							<h4 class="title">Savings achievable</h4>
+							<p class="info">Vision of the savings achievable through the use of solar panels.</p>
+						</div>					
+					</div>
+					<div class="col-6">
+						<div class="info-box" data-aos="zoom-out">
+							<div class="icon"><i class='bx bx-book' style="color: rgba(0,140,158,1)"></i></div>
+							<h4 class="title">Last push</h4>
+							<p class="info">Useful data for the installation and use of solar panels. </p>
+						</div>					
+					</div>
+					<div class="col-6">
+						<div class="info-box" data-aos="zoom-out">
+							<div class="icon"><i class='bx bx-map' style="color: rgba(0,140,158,1)"></i></div>					
+							<h4 class="title">World wide</h4>
+							<p class="info">Each of the previous points is obtained on the basis of the specified location. </p>
+						</div>					
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="jumpIn" class="jumpIn">
+			<div class="container">
+				<div class="row" data-aos="zoom-out">
+					<div class="col-lg-9 text-center text-lg-start">
+						<h4 class="title">Try the web app</h4>
+						<p class="info">Jump straight into the details, try the web app and get solar related data of your location.</p>					
+					</div>
+					<div class="col-lg-3 text-center button-case">
+						<a class="button align-middle" href="#">Calculate</a>					
+					</div>					
 				</div>
 			</div>
 		</section>
 		
-		<section id="services">
+		<section id="team" class="team">
 			<div class="container">
 				<div class="section-title" data-aos="zoom-out">
-					<h2>Services</h2>
-				
+					<h2>Our team</h2>										
+				</div>
+				<div class="row">
+					<
 				</div>
 			</div>
 		</section>
 		
-		<section id="team">
-			<div class="container">
-				<div class="section-title" data-aos="zoom-out">
-					<h2>Our team crew</h2>
-				
-				</div>
-			</div>
-		</section>
-		
-		<section id="contact">
+		<section id="contact" class="contact">
 			<div class="container">
 				<div class="section-title" data-aos="zoom-out">
 					<h2>Contact us</h2>
@@ -150,6 +204,7 @@
 		<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 		<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+		<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
 		<script src="/static/js/homeMain.js"></script>
 
 	</body>

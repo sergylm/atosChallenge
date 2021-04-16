@@ -15,24 +15,44 @@
       <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css"/>
       <!-- Chartjs -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="">
+		<!-- font -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+		<!-- animatecss -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<!-- swiper -->
+		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+		<!-- boxicons -->
+		<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+		<!-- glitherbox -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.css" integrity="sha512-Woz+DqWYJ51bpVk5Fv0yES/edIMXjj3Ynda+KWTIkGoynAMHrqTcDUQltbipuiaD5ymEo9520lyoVOo9jCQOCA==" crossorigin="anonymous" />
+		<!-- remixicon -->
+		<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">	
+		
    </head>
    <body>
-      <header>
-         <img class="logo" src="/static/resources/logo_small.ico" alt="logo">
-         <input type="checkbox" id="nav-toggle" class="nav-toggle">
-         <nav>
-            <ul>
-               <li><a href="#">Home</a></li>
-               <li><a href="#">About</a></li>
-               <li><a href="#">Blog</a></li>
-               <li><a href="#">Contact</a></li>
-            </ul>
-         </nav>
-         <label for="nav-toggle" class="nav-toggle-label">
-         <span></span>
-         </label>
-      </header>
-      <main>
+	  <header id="header" class="fixed-top d-flex align-items-center  header-start ">
+		<div class="container d-flex align-items-center justify-content-between">
+
+		  <div class="logo">
+			<a href="home.html"><img src="img/logo.jpg" alt="" class="img-fluid"></a>
+		  </div>
+
+		  <nav id="navbar" class="navbar">
+			<ul>
+			  <li><a class="nav-link scrollto active" href="home.html#backheader">Home</a></li>
+			  <li><a class="nav-link scrollto" href="home.html#aboutUs">About</a></li>
+			  <li><a class="nav-link scrollto" href="home.html#services">Services</a></li>
+			  <li><a class="nav-link scrollto" href="home.html#team">Team</a></li>
+			  <li><a class="nav-link scrollto" href="home.html#contact">Contact</a></li>
+			</ul>
+			<i class="bi bi-list mobile-nav-toggle"></i>
+		  </nav>
+		</div>
+	  </header>
+	  
+      <main class="content">
          <div class="content">
             <div id="map"></div>
             <div class="overlay">
@@ -98,5 +118,13 @@
       <script src="/static/js/main.js" type="module"></script>
       <!--Boostrap-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+	  <!-- other -->
+	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-k2GFCTbp9rQU412BStrcD/rlwv1PYec9SNrkbQlo6RZCf75l6KcC3UwDY8H5n5hl4v77IDtIPwOk9Dqjs/mMBQ==" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+		<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+		<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
    </body>
 </html>
