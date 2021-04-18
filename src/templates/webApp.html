@@ -33,7 +33,7 @@
 		
    </head>
    <body>
-	  <header id="header" class="fixed-top d-flex align-items-center  header-start ">
+	  <header id="header" class="d-flex align-items-center  header-start ">
 		<div class="container d-flex align-items-center justify-content-between">
 
 		  <div class="logo">
@@ -53,59 +53,59 @@
 		</div>
 	  </header>
 	  
-      <main class="content">
+      <main id="main">
          <div class="content">
-            <div id="map"></div>
-            <div class="overlay">
-               <div role="tablist" id="accordion-1">
-                  <div class="card">
-                     <div class="card-header" role="tab">
-                           <h5 class="mb-0"><a id="card1" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-1" href="#accordion-1 .item-1">First Step</a></h5>
-                     </div>
-                     <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-1">
-                        <div class="card-body">
-                           <div id="findbox">
-                              <label for="">Type your adress.</label>
-                           </div>
+               <div id="map"></div>
+               <div class="overlay">
+                  <div role="tablist" id="accordion-1">
+                     <div class="card">
+                        <div class="card-header" role="tab">
+                              <h5 class="mb-0"><a id="card1" data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-1" href="#accordion-1 .item-1">First Step</a></h5>
+                        </div>
+                        <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-1">
+                           <div class="card-body">
+                              <div id="findbox">
+                                 <label for="">Type your adress.</label>
+                              </div>
 
+                           </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="card">
-                     <div class="card-header" role="tab">
-                        <h5 class="mb-0"><a id="card2" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="#accordion-1 .item-2">Second Step</a></h5>
-                     </div>
-                     <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
-                        <div class="card-body">
-                          <label>Select your plot on the map then hit the button below.</label>
-                          <input id="parcela" type="submit" value="Done">
+                     <div class="card">
+                        <div class="card-header" role="tab">
+                           <h5 class="mb-0"><a id="card2" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="#accordion-1 .item-2">Second Step</a></h5>
+                        </div>
+                        <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
+                           <div class="card-body">
+                           <label>Select your plot on the map then hit the button below.</label>
+                           <input id="parcela" type="submit" value="Done">
+                           </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="card">
-                     <div class="card-header" role="tab">
-                        <h5 class="mb-0"><a id="card3" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-3" href="#accordion-1 .item-3">Third Step</a></h5>
+                     <div class="card">
+                        <div class="card-header" role="tab">
+                           <h5 class="mb-0"><a id="card3" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-3" href="#accordion-1 .item-3">Third Step</a></h5>
+                        </div>
+                        <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                           <div class="card-body">
+                              <canvas id="chart"></canvas>
+                        </div>
+                        </div>
                      </div>
-                     <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
-                        <div class="card-body">
-                           <canvas id="chart"></canvas>
-                       </div>
-                     </div>
-                  </div>
-                  <div class="card">
-                     <div class="card-header" role="tab">
-                        <h5 class="mb-0"><a id="card4" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-4" href="#accordion-1 .item-4">Extra</a></h5>
-                     </div>
-                     <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
-                        <div class="card-body">
-                           <div id= 'obj'></div>
+                     <div class="card">
+                        <div class="card-header" role="tab">
+                           <h5 class="mb-0"><a id="card4" data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-4" href="#accordion-1 .item-4">Extra</a></h5>
+                        </div>
+                        <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+                           <div class="card-body">
+                              <div id= 'obj'></div>
+                           </div>
                         </div>
                      </div>
                   </div>
                </div>
-            </div>
          </div>
-         {% csrf_token %}
+         {% csrf_token %}      
       </main>
       <!-- JQuery-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -123,9 +123,6 @@
 	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-k2GFCTbp9rQU412BStrcD/rlwv1PYec9SNrkbQlo6RZCf75l6KcC3UwDY8H5n5hl4v77IDtIPwOk9Dqjs/mMBQ==" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-		<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 		<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
-		<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
    </body>
 </html>
