@@ -42,7 +42,7 @@ def home(request):
     return render(request, "../templates/home.html")
 
 def posAnalisis(request):
-    return render(request, "../templates/posAnalisis.html")
+    return render(request, "../templates/postAnalisis.html")
 
 def solarData(request):
     if request.method == "POST":

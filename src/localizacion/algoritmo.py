@@ -14,7 +14,8 @@ def getSolarData(latitud, longitud):
     parameters = data['features'][0]['properties']['parameter'] #valores medios mensual y anual por parametro
     parametersInfo = data['parameterInformation'] #nombre completo y unidades de parametros
     for para in parameters:
-        parameters[para].insert(0,parametersInfo[para]['longname'] + "("+ parametersInfo[para]['units'] + ')')
+        parameters[para].insert(0,parametersInfo[para]['longname'])
+        parameters[para].insert(1,parametersInfo[para]['units'])
     aux = []
     for para in parameters:
         aux.append(parameters[para])

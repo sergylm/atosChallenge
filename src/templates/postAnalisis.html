@@ -5,7 +5,7 @@
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 		<title>Solar Solution Home</title>
 		<!-- icon -->
-		<link href="/static/resources/logo.jpg" rel="icon">
+		<link href="/static/resources/favicon.ico" rel="icon">
 		<!-- boostrap -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<!-- font -->
@@ -30,7 +30,7 @@
 		<div class="container d-flex align-items-center justify-content-between">
 
 		  <div class="logo">
-			<a href="home.html"><img src="img/logo.jpg" alt="" class="img-fluid"></a>
+			<a href="home.html"><img src="static/resources/logo.ico" alt="" class="img-fluid"></a>
 		  </div>
 
 		  <nav id="navbar" class="navbar">
@@ -38,7 +38,7 @@
 			  <li><a class="nav-link scrollto active" href="home.html#backheader">Home</a></li>
 			  <li><a class="nav-link scrollto" href="home.html#aboutUs">About</a></li>
 			  <li><a class="nav-link scrollto" href="home.html#services">Services</a></li>
-			  <li><a class="nav-link scrollto" href="webApp.html">WebApp</a></li>
+			  <li><a class="nav-link scrollto" href="webapp">WebApp</a></li>
 			  <li><a class="nav-link scrollto" href="home.html#team">Team</a></li>
 			  <li><a class="nav-link scrollto" href="home.html#contact">Contact</a></li>
 			</ul>
@@ -49,9 +49,60 @@
 	  </header>
 	  
 	<main class="content">
-	  
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h1>Final analysis</h1>
+					<p>We will show you all the data obtained and help you to see the benefits of a solar installation for self-consumption.</p>
+					<p id="address"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<canvas id="chart0"></canvas>
+				</div>
+				<div class="col">
+					<h1>Viability of the selected area</h1>
+					<p>The graph shows the optimum irradiation of the site (measured in kwh/m2 per day). With this data all the information regarding feasibility can be calculated.</p>
+					<p>This information has been obtained from <b>NASA Prediction of Worldwide energy Resources</b>.</p>
+					<a href="https://power.larc.nasa.gov/">More information</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<h1>Money factors</h1>
+					<p id="facts"></p>
+					<p id="panels"></p>
+				</div>
+				<div class="col">
+					<p id="cost"></p>
+					<p id="amortization"></p>
+					<p id="amortization2"></p>
+				</div>
+				<div class="col">
+					<p id="pollution"></p>
+					<p id="pollution2"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<h1>Model 3D analysis</h1>
+					<p>What is shown on the left is the projection of your selected terrain.</p>
+					<p>Currently this analysis is still under development, but you will be able to get a more accurate analysis of the influence of the leftover projection on your terrain in the future.</p>
+				</div>
+				<div class="col">
+					<div id="obj"></div>
+				</div>
+			</div>
+		</div>
+		{% csrf_token %}
 	</main>
-	  
+		<!-- JQuery-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  	<!-- Chartjs -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin=""></script>
+		<!-- Scripts -->   
+		<script src="/static/js/posAJS.js" type="module"></script>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>	  
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-k2GFCTbp9rQU412BStrcD/rlwv1PYec9SNrkbQlo6RZCf75l6KcC3UwDY8H5n5hl4v77IDtIPwOk9Dqjs/mMBQ==" crossorigin="anonymous"></script>
@@ -61,7 +112,6 @@
 		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 		<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 		<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
-		<script src="/static/js/posAJS.js"></script>
 
 	</body>
 </html>
