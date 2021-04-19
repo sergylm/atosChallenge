@@ -158,6 +158,38 @@ h1, h2, h3, h4, h5, h6, p {
 .navbar-mobile .getstarted {
   margin: 15px;
 }
+
+.navbar-mobile .dropdown ul {
+  position: static;
+  display: none;
+  margin: 10px 20px;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+  background: #fff;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+}
+
+.navbar-mobile .dropdown ul li {
+  min-width: 200px;
+}
+
+.navbar-mobile .dropdown ul a {
+  padding: 10px 20px;
+}
+
+.navbar-mobile .dropdown ul a i {
+  font-size: 12px;
+}
+
+.navbar-mobile .dropdown ul a:hover, .navbar-mobile .dropdown ul .active:hover, .navbar-mobile .dropdown ul li:hover > a {
+  color: #fff;
+}
+
+.navbar-mobile .dropdown > .dropdown-active {
+  display: block;
+}
 /* backheader-style */
 #backheader {
   width: 100%;
@@ -305,7 +337,7 @@ h1, h2, h3, h4, h5, h6, p {
   }
 }
 
-
+/* secion-style */
 section {
   padding: 60px 0;
   overflow: hidden;
@@ -350,7 +382,11 @@ section {
 .aboutUs {
   padding-top: 80px;
 }
-
+.aboutUs p{
+	text-align:justify;
+	font-size:18x;
+	font-weight:400;
+}
 /* Services-style */
 .services .info-box{
   padding: 30px;
@@ -414,4 +450,87 @@ section {
 }
 .jumpIn .info{
 	color: white;
+}
+/* team-style */
+
+.team img{
+	max-width: 100%;
+    max-height: 100%;
+	margin: 0px 15px 15px 0px;
+}
+.team #left .info .title{
+	color:rgba(52,56,56,1);
+	text-align:right;
+}
+
+.team #left .info .details{
+	font-size:16px;
+	font-weight:300px;
+	text-align:right;
+
+}
+.team #right {
+	padding-left:50px;
+}
+
+.team #left {
+	padding-left:50px	;
+}
+
+.team #right .info .title{
+	color:rgba(52,56,56,1);
+	text-align:left;
+}
+.team #right .info .details{
+	font-size:16px;
+	font-weight:300px;	
+	text-align:left;
+
+}
+
+.team .box-shadow{
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 29px 0 rgba(68, 88, 144, 0.32);
+  transition: all 0.4s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+/* footer-style */
+#footer{
+  background-color:rgba(52,56,56,1);
+  text-align: center;
+    padding: 30px 0;
+
+
+}
+#footer .title{
+	font-size:24px;
+	font-weight:800;
+	color:rgba(0,140,158,1);
+	position:relative;
+}
+#footer .info{
+	color:white;
+	position:relative;
+	font-size:15px;
+}
+
+#footer span{
+	font-weight:800;
+	color: rgba(0,223,252,1);
+	position:relative;
+	font-size: 14px;
+}
+
+#footer .title:after{
+  content: "";
+  width: 250px;
+  height: 1px;
+  display: inline-block;
+  background: rgba(0,140,158,1);
+  margin: 4px 10px;
 }
