@@ -28,7 +28,6 @@ urlpatterns = [
     path('localizacion/', views.localizacion_create_view),
     path('', views.home),
     path('carga_tabla/', views.carga_tabla, name='datos'),
-    path('mapa', views.webApp),
     path('nasa', views.solarData),
     path('polygon', views.polygonOSM),
     path('webapp', views.webApp),

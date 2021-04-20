@@ -5,7 +5,7 @@
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 		<title>Solar Solution Home</title>
 		<!-- icon -->
-		<link href="/static/resources/favicon.ico" rel="icon">
+		<link href="/static/resources/logoPequeño.png" rel="icon">
 		<!-- boostrap -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -27,21 +27,21 @@
 		<link href="/static/css/posAStyle.css" rel="stylesheet">
 	</head>
 	<body>
-	  <header id="header" class="fixed-top d-flex align-items-center  header-start ">
+	  <header id="header" class="d-flex align-items-center  header-start ">
 		<div class="container d-flex align-items-center justify-content-between">
 
 		  <div class="logo">
-			<a href="home.html"><img src="static/resources/logo.ico" alt="" class="img-fluid"></a>
+			<a href="home.html"><img src="/static/resources/logo.svg" alt="" class="img-fluid"></a>
 		  </div>
 
 		  <nav id="navbar" class="navbar">
 			<ul>
-			  <li><a class="nav-link scrollto active" href="home.html#backheader">Home</a></li>
-			  <li><a class="nav-link scrollto" href="home.html#aboutUs">About</a></li>
-			  <li><a class="nav-link scrollto" href="home.html#services">Services</a></li>
+			  <li><a class="nav-link scrollto active" href="/">Home</a></li>
+			  <li><a class="nav-link scrollto" href="/#aboutUs">About</a></li>
+			  <li><a class="nav-link scrollto" href="/#services">Services</a></li>
 			  <li><a class="nav-link scrollto" href="webapp">WebApp</a></li>
-			  <li><a class="nav-link scrollto" href="home.html#team">Team</a></li>
-			  <li><a class="nav-link scrollto" href="home.html#contact">Contact</a></li>
+			  <li><a class="nav-link scrollto" href="/#team">Team</a></li>
+			  <li><a class="nav-link scrollto" href="#footer">Contact</a></li>
 			</ul>
 			<i class="bi bi-list mobile-nav-toggle"></i>
 		  </nav>
@@ -49,46 +49,76 @@
 		</div>
 	  </header>
 	  
-	<main class="content">
+	<main class="main">
 		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h1>Final analysis</h1>
-					<p>We will show you all the data obtained and help you to see the benefits of a solar installation for self-consumption.</p>
+			<div class="row title section">
+				<div class="col" data-aos="fade-down" data-aos-duration="2500">
+					<h1 class="titulo">Final analysis</h1>
+					<p class="info">We will show you all the data obtained and help you to see the benefits of a solar installation for self-consumption.</p>
 					<p id="address"></p>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col">
+			<div class="row section">
+				<div class="col" data-aos="fade-right" data-aos-duration="2500">
 					<canvas id="chart0"></canvas>
 				</div>
-				<div class="col">
-					<h1>Viability of the selected area</h1>
+				<div class="col" data-aos="fade-left" data-aos-duration="2500">
+					<h2>Viability of the selected area</h2>
 					<p>The graph shows the optimum irradiation of the site (measured in kwh/m2 per day). With this data all the information regarding feasibility can be calculated.</p>
 					<p>This information has been obtained from <b>NASA Prediction of Worldwide energy Resources</b>.</p>
-					<a href="https://power.larc.nasa.gov/">More information</a>
+					<a href="https://power.larc.nasa.gov/" class="animate__animated animate__fadeInUp scrollto">More information</a>
+
 				</div>
 			</div>
-			<div class="row">
-				<div class="col">
-					<h1>Money factors</h1>
-					<p id="facts"></p>
-					<p id="panels"></p>
+			<div class="row black-inline section" data-aos="zoom-out" data-aos-duration="2500">
+				<div class="col-12">
+					<h1 class="title">Money factors</h1>
 				</div>
-				<div class="col">
-					<p id="cost"></p>
-					<p id="amortization"></p>
-					<p id="amortization2"></p>
+				<div class="col-4">
+					<p class="important" id="years"></p>
 				</div>
-				<div class="col">
-					<p id="pollution"></p>
-					<p id="pollution2"></p>
+				<div class="col-4">
+					<p class="important" id="payback"></p>
+				</div>
+				<div class="col-4">
+					<p class="important" id="payback25"></p>
+				</div>
+				<div class="col-6">
+					<p class="info" id="facts"></p>
+					<p class="info" id="panels"></p>
+				</div>
+				<div class="col-6">
+					<p class="info" id="cost"></p>
+					<p class="info" id="amortization"></p>
+					<p class="info" id="amortization2"></p>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row eco section" data-aos="fade-up" data-aos-duration="2500">
+				<div class="col-12">
+					<h1 class="title">Environmental impact</h1>
+				</div>
+				<div class="col-6">
+					<img src="/static/resources/imgS.jpg"/>
+				</div>
+				<div class="col-6">
+					<div class="row">
+						<div class="col-12">
+							<p class="info">Thanks to solar energy, among others, we are achieving a better conservation of our planet by reducing gtCO2e. This is partly a consequence of the reduced need to generate electricity by non-renewable means and the decrease in tree felling associated with the previous point.</p>
+							<p class="info">Investing in domestic solar energy will not only have long term benefits, it will also help the environment and will be a step towards a more sustainable world. </p>
+							<p class="info" id="pollution"></p>
+						</div>
+					</div>
+					<div class="col-12">
+						<img src="https://images.unsplash.com/photo-1574689049597-7e6ed3ca358e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1695&q=80"/>
+
+					</div>
+				</div>
+				</div>
+			</div>
+			<div class="row model section" data-aos="fade-right" data-aos-duration="2000">
 				<div class="col">
-					<h1>Model 3D analysis</h1>
-					<p>What is shown on the left is the projection of your selected terrain.</p>
+					<h2>Model 3D analysis</h2>
+					<p>What is shown on the right is the projection of your selected terrain.</p>
 					<p>Currently this analysis is still under development, but you will be able to get a more accurate analysis of the influence of the leftover projection on your terrain in the future.</p>
 				</div>
 				<div class="col">
@@ -96,7 +126,24 @@
 				</div>
 			</div>
 		</div>
-		{% csrf_token %}
+		{% csrf_token %}		
+		<footer id="footer">
+			<div class="container">
+				<div class="row" >
+					<div class="col-lg-9 text-left text-lg-start">
+					<h3 class="title">Contact us</h3>
+					<p class="info">Phone Number: <span class="resalte">34+ 6406666666</span></p>
+					<p class="info">Adress: <span class="resalte">Somewhere along this planet</span></p>
+					<p class="info">Email Adress: <span class="resalte">SolarSolution@gmail.com</span></p>
+
+					</div>
+					<div class="col-lg-3 text-left text-lg-start">
+					<h3 class="title">Copyright</h3>
+					<p class="info">Do not try to steal from us c:</p>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</main>
 		<!-- JQuery-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -14,6 +14,10 @@
 // progress.style.display = 'none';
 // var aux = false;
 
+
+AOS.init();
+
+
 function dynamicColors() {
     var r = Math.floor(Math.random() * 255);
     var g = Math.floor(Math.random() * 255);
@@ -148,8 +152,10 @@ document.getElementById("panels").innerHTML = "Based on your free space (<b>" + 
 document.getElementById("cost").innerHTML = "The average price of such an installation can cost: <b>" + cost + " Euros</b>."
 document.getElementById("amortization").innerHTML = "The payback time would be <b>"+ payback+" years</b>, since it implies a savings of <b>"+ anualsave +" euros</b> per year."
 document.getElementById("amortization2").innerHTML = "Solar panels have a life span of 25 years, but can continue to operate for longer. From the payback time onwards, everything would be saved, since the installation has already been amortized. <b>"+save+" euros</b> of savings over the 25-year period."
-document.getElementById("pollution").innerHTML = "But the most important thing is how much we can reduce our impact on the environment. With this installation you will generate <b>" + production +" kwh/year </b>clean kwh directly in your home."
-document.getElementById("pollution2").innerHTML = "This is equivalent to <b>"+pollution+" tco2/year</b> that is not emitted into the atmosphere, this in turn would be the same as if you plant <b>"+ trees +" trees every year</b>."
+document.getElementById("pollution").innerHTML = "You will be able to generate approximately <b>" + production +" kw per year</b> which would be equivalent to a reduction of <b>"+ pollution + " tonnes of carbon dioxide </b> emitted into the atmosphere. That would be equivalent to planting <b>" + trees + " trees</b> annualy." 
+document.getElementById("payback").innerHTML = "Save " + anualsave +"€/Year";
+document.getElementById("years").innerHTML = "" + payback +" Years for payback";
+document.getElementById("payback25").innerHTML = "Save in total " + save +"€";
 
 //--------------------------------------------------------------------------------------------------------------------------------------------
 //Threejs
@@ -215,7 +221,7 @@ function init() {
         } );
     renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio( window.devicePixelRatio );
-    renderer.setSize(400,400);
+    renderer.setSize(600,400);
     container.appendChild( renderer.domElement );
     window.addEventListener( 'resize', onWindowResize );
 

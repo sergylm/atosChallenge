@@ -1,0 +1,32 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient spreadMethod="pad" y2="0" x2="1" y1="0" x1="0" id="svg_4">
+   <stop offset="0" stop-color="#000"/>
+   <stop offset="1" stop-color="#ffffff"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke-opacity="0" x="160" y="165" rx="15" stroke="url(#svg_4)" id="svg_1" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <path id="svg_3" d="m159.5,196.5" opacity="NaN" stroke-opacity="null" stroke-dasharray="null" stroke-width="null" stroke="#000" fill="#007fff"/>
+  <rect stroke-opacity="0" x="265" y="165" rx="15" stroke="url(#svg_4)" id="svg_5" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke="url(#svg_4)" stroke-opacity="0" x="160" y="270" rx="15" id="svg_6" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="265" y="270" rx="15" stroke="url(#svg_4)" id="svg_7" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="160" y="375" rx="15" stroke="url(#svg_4)" id="svg_8" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="265" y="375" rx="15" stroke="url(#svg_4)" id="svg_9" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="370" y="165" rx="15" stroke="url(#svg_4)" id="svg_10" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="370" y="270" rx="15" stroke="url(#svg_4)" id="svg_11" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke="url(#svg_4)" stroke-opacity="0" x="370" y="375" rx="15" id="svg_12" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="475" y="165" rx="15" stroke="url(#svg_4)" id="svg_13" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="475" y="270" rx="15" stroke="url(#svg_4)" id="svg_14" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="475" y="375" rx="15" stroke="url(#svg_4)" id="svg_15" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="160" y="60" rx="15" stroke="url(#svg_4)" id="svg_16" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="265" y="60" rx="15" stroke="url(#svg_4)" id="svg_17" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="370" y="60" rx="15" stroke="url(#svg_4)" id="svg_18" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="475" y="60" rx="15" stroke="url(#svg_4)" id="svg_19" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="580" y="375" rx="15" stroke="url(#svg_4)" id="svg_2" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="580" y="270" rx="15" stroke="url(#svg_4)" id="svg_20" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="580" y="165" rx="15" stroke="url(#svg_4)" id="svg_21" height="100" width="100" opacity="undefined" fill="#007fff"/>
+  <rect stroke-opacity="0" x="580" y="60" rx="15" stroke="url(#svg_4)" id="svg_22" height="100" width="100" opacity="undefined" fill="#007fff"/>
+ </g>
+</svg>
