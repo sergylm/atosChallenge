@@ -161,12 +161,12 @@ function init() {
 
     new MTLLoader( manager )
         .setPath( './static/resources/' )
-        .load( 'prueba.obj.mtl', function ( materials ) {
+        .load( 'model3d.obj.mtl', function ( materials ) {
             materials.preload();
             new OBJLoader( manager )
                 .setMaterials( materials )
                 .setPath( './static/resources/' )
-                .load( 'prueba.obj', function ( object ) {
+                .load( 'model3d.obj', function ( object ) {
                     object.position.y = - 10;
                     scene.add( object );
                 }, onProgress, onError );

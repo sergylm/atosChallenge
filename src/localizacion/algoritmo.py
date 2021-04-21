@@ -43,7 +43,7 @@ def trimOSM(coords):
     os.rename("src/map2.osm", "src/map.osm")
     convert = r"""src\OSM2World\osm2world.sh -i src/map.osm -o src/prueba.obj"""
     convert2 = r"""src\OSM2World\osm2world.bat -i src/map.osm -o src/prueba.obj"""
-    convert3 = r"""java -Xmx512m -jar src/OSM2World/OSM2World.jar -i src/map.osm -o src/static/resources/prueba.obj""" 
+    convert3 = r"""java -Xmx512m -jar src/OSM2World/OSM2World.jar -i src/map.osm -o src/static/resources/model3d.obj""" 
     os.system(convert3)
     
     pass
