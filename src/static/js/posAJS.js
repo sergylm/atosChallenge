@@ -1,22 +1,6 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------
 //chartjs
-// var ctx = document.getElementById('chart').getContext('2d');
-// var ctx2 = document.getElementById('chart2').getContext('2d');
-// var ctx3 = document.getElementById('chart3').getContext('2d');
-// var ctx4 = document.getElementById('chart4').getContext('2d');
-// var ctx5 = document.getElementById('chart5').getContext('2d');
-// var ctx6 = document.getElementById('chart6').getContext('2d');
-// var ctx7 = document.getElementById('chart7').getContext('2d');
-// var ctx8 = document.getElementById('chart8').getContext('2d');
-// var ctx9 = document.getElementById('chart9').getContext('2d');
-
-// var progress = document.getElementById('animationProgress');
-// progress.style.display = 'none';
-// var aux = false;
-
-
 AOS.init();
-
 
 function dynamicColors() {
     var r = Math.floor(Math.random() * 255);
@@ -27,7 +11,6 @@ function dynamicColors() {
 
 function loadData(){
     var data = JSON.parse(sessionStorage.getItem("data"));
-    // console.log(data);
     var labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'Anual'];
     var backgroundColors = [];
     var borderColors = [];
@@ -41,7 +24,7 @@ function loadData(){
     var dataSet = [];
     var config = [];
 
-    for(var i=0; i<1; i++){
+    for(var i=0; i<1; i++){ // in case you want to show all the graphs, we only show the first one.
         if (i==2){
             dataSet.push("error");
             ctx.push("Error");
@@ -77,34 +60,6 @@ function loadData(){
         ctx.push(document.getElementById('chart'+i).getContext('2d'));
         new Chart(ctx[i],config[i]);
     };
-    // var dataSet = {
-    //     label: data[0][0] + "(" +data[0][1] + ")",
-    //     data: data[0].slice(2,15),
-    //     backgroundColor: backgroundColors,
-    //     borderColor: borderColors,
-    //     borderWidth: 1
-    // };
-
-    // var config = {
-    //     type: 'bar',
-    //     data: {
-    //         labels: labels,
-    //         datasets: [dataSet]
-    //     },
-    //     options: {
-    //         title: {
-    //             display: true,
-    //         },
-    //         scales: {
-    //             yAxes: [{
-    //                 ticks: {
-    //                     beginAtZero: true
-    //                 }
-    //             }]
-    //         },
-    //     }
-    // };
-    // new Chart(ctx, config);
 };
 
 loadData();
@@ -167,8 +122,6 @@ import {OrbitControls} from 'https://unpkg.com/three@0.127.0/examples/jsm/contro
 
 let camera, scene, renderer;
 
-let windowHalfX = window.innerWidth / 2;
-let windowHalfY = window.innerHeight / 2;
 const container  = document.getElementById('obj');                              
 
 function init() {

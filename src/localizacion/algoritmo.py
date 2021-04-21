@@ -1,18 +1,12 @@
-import json
 import os
 import requests
-import wget
 
 def getSolarData(latitud, longitud):
     URL = ("https://power.larc.nasa.gov/cgi-bin/v1/DataAccess.py?&request=execute&tempAverage=CLIMATOLOGY&identifier=SinglePoint&parameters=SI_EF_TILTED_SURFACE&userCommunity=SB&lon=%s&lat=%s&outputList=CSV&user=DOCUMENTATION" %(longitud,latitud))
     r = requests.get(URL)
     data = r.json()
-    # with open('data.json','w') as json_file:
-    #     json.dump(data,json_file)
-    #csv = data['outputs']['csv'] #url del csv
-    #wget.download(csv, './prueba.csv') # para descargar el csv
-    parameters = data['features'][0]['properties']['parameter'] #valores medios mensual y anual por parametro
-    parametersInfo = data['parameterInformation'] #nombre completo y unidades de parametros
+    parameters = data['features'][0]['properties']['parameter'] #monthly and annual average values by parameter
+    parametersInfo = data['parameterInformation'] #full name and parameter units
     for para in parameters:
         parameters[para].insert(0,parametersInfo[para]['longname'])
         parameters[para].insert(1,parametersInfo[para]['units'])
@@ -29,7 +23,7 @@ def getOSM(geoJson):
     maxLat = max(lat)
     minLong = min(long)
     minLat = min(lat)
-    #rectangulo inscrito
+    #inscribed rectangle
     #geoJson['geometry']['coordinates'][0] = [[maxLong,maxLat],[minLong,maxLat],[minLong,minLat],[maxLong,minLat],[maxLong,minLat]]
     #https://api.openstreetmap.org/api/0.6/map?bbox=left,bottom,right,top
     URL= "https://api.openstreetmap.org/api/0.6/map?bbox=%s,%s,%s,%s" % (minLong,minLat,maxLong,maxLat)
@@ -38,7 +32,6 @@ def getOSM(geoJson):
     return coords
 
 def trimOSM(coords):
-    #print(str(coords[0][0])+" "+str(coords[0][1]))
     with open('src/polygone.poly','w') as f:
         f.write("polygone\n")
         for item in coords:
