@@ -1,19 +1,18 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from .algoritmo import *
+from .algoritmo import get_osm, get_solar_data, trim_osm
 import json
-from django.views.decorators.csrf import csrf_protect
 
-def webApp(request):
+def webapp(request):
     return render(request, "../templates/webApp.html")
 
 def home(request):
     return render(request, "../templates/home.html")
 
-def posAnalisis(request):
+def post_analisis(request):
     return render(request, "../templates/postAnalisis.html")
 
-def solarData(request):
+def solar_data(request):
     if request.method == "POST":
         data = parse_obj(json.loads(request.body))['Data']
         parsed_data = {}
@@ -21,17 +20,16 @@ def solarData(request):
             for key in item:
                 parsed_data[key]=item[key]
         print(parsed_data)
-        solarData= getSolarData(parsed_data['latitude'], parsed_data['longitude'])
-        return HttpResponse(json.dumps(solarData))
+        solar_data= get_solar_data(parsed_data['latitude'], parsed_data['longitude'])
+        return HttpResponse(json.dumps(solar_data))
     else:
         return HttpResponse('Error')
 
-def polygonOSM(request):
+def polygon_osm(request):
     if request.method == "POST":
         data = parse_obj(json.loads(request.body))['Data']
-        #print(data)
-        coords = getOSM(data)
-        trimOSM(coords)
+        coords = get_osm(data)
+        trim_osm(coords)
         return HttpResponse(json.dumps(coords))
     else:
         return HttpResponse('Error')
@@ -42,5 +40,4 @@ def parse_obj(obj):
             obj[key] = obj[key].encode('latin_1').decode('utf-8')
         elif isinstance(obj[key], list):
             obj[key] = list(map(lambda x: x if type(x) != str else x.encode('latin_1').decode('utf-8'), obj[key]))
-        pass
     return obj

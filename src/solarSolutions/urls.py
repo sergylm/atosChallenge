@@ -26,10 +26,10 @@ favicon_view = RedirectView.as_view(url='/static/resources/favicon.ico', permane
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
-    path('nasa', views.solarData),
-    path('polygon', views.polygonOSM),
-    path('webapp', views.webApp),
-    path('analysis', views.posAnalisis),
+    path('nasa', views.solar_data),
+    path('polygon', views.polygon_osm),
+    path('webapp', views.webapp),
+    path('analysis', views.post_analisis),
     re_path(r'favicon\.ico$', favicon_view),
 ]
 
