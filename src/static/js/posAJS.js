@@ -67,9 +67,6 @@ loadData();
 var area = sessionStorage.getItem("area");
 var consume = sessionStorage.getItem("consume");
 var location = sessionStorage.getItem("location");
-console.log(sessionStorage.getItem("area"));
-console.log(sessionStorage.getItem("consume"));
-console.log(sessionStorage.getItem("location"));
 
 document.getElementById("address").innerHTML = "All these data correspond to the following address: <b>" + location + "</b>";
 
@@ -180,10 +177,7 @@ function init() {
 
 }
 
-export function onWindowResize() {
-
-    windowHalfX = container.clientWidth / 2;
-    windowHalfY = container.clientHeight / 2;
+function onWindowResize() {
 
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
